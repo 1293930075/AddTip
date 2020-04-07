@@ -4,7 +4,7 @@
  * @Author: 
  * @Date: 2019-12-09 10:39:33
  * @LastEditors: Henry
- * @LastEditTime: 2020-04-07 23:44:52
+ * @LastEditTime: 2020-04-07 23:57:39
  -->
 <template>
   <div  v-if="show">
@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-  const MenuButton = wx.getMenuButtonBoundingClientRect() // 获取胶囊定位
+  const menu = wx.getMenuButtonBoundingClientRect() // 获取胶囊定位
   export default {
     props: ['top'], // top 作为系统nav标示
     data () {
@@ -60,12 +60,12 @@
           }
         })
         // 自定义nav
-        this.stylePart = `right:${this.systemInfoWidth - MenuButton.right + MenuButton.width * 0.72 - 5}px;top:${MenuButton.bottom + 11}px`
-        this.styleAll = `top:${MenuButton.bottom + 17.5}px;`
+        this.stylePart = `right:${this.systemInfoWidth - menu.right + menu.width * 0.72 - 5}px;top:${menu.bottom + 11}px`
+        this.styleAll = `top:${menu.bottom + 17.5}px;`
         // 小程序系统nav,并且判断iphoneX 系列
         if (this.top) {
-          this.styleAll = `top:${MenuButton.bottom / this.tipsTop}px;`
-          this.stylePart = `right:${this.systemInfoWidth - MenuButton.right + MenuButton.width * 0.72 - 5}px;top:${MenuButton.bottom / this.arrowTop}px`
+          this.styleAll = `top:${menu.bottom / this.tipsTop}px;`
+          this.stylePart = `right:${this.systemInfoWidth - menu.right + menu.width * 0.72 - 5}px;top:${menu.bottom / this.arrowTop}px`
         }
         let flag = true
         if (flag) {
